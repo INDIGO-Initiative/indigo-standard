@@ -33,21 +33,6 @@ Results and evaluations can be associated either with individual outcome metrics
 
 Upstream sources of payment funding can be described by linking any number of outcome funds to a project.
 
-Organisations and projects
---------------------------
-
-In the high-level overview, a project is modelled as a composite of components. The structure of projects, and the broader sector, emerges by associating individual components of a project with one or more organisations.
-
-.. image:: _assets/organisations.png
-
-An organisation may appear multiple times in a single project, in different roles, and also recur across projects. The organisation can be traced across projects using `INDIGO identifiers`_.
-
-Some components also allow an organisation's role to be further broken down via a codelist.
-
-.. admonition:: Example
-
-   A diversified NGO makes an investment of USD250,000 in a project and is also involved in an aspect of service delivery. The same organisation would appear twice in the data that describes the project: first associated with an `Investment` and then associated with a `Service Provision`. Both of these would describe the organisation in the `Organisational Role Category` of "Nonprofit/NGO".
-
 Project-level and disaggregated data
 ------------------------------------
 
@@ -72,7 +57,7 @@ To reduce duplication and error and allow for easier analysis, the INDIGO data s
 
 .. image:: _assets/shared-data.png
 
-Shared objects are distinguished by identifiers with an 'INDIGO' prefix. See 
+Shared objects are distinguished by identifiers with an 'INDIGO' prefix. See `INDIGO identifiers`_.
 
 Each shared object should only be described once, and any new data or corrections added as updates rather than creating a new, duplicate object with a new INDIGO identifier.
 
@@ -80,6 +65,25 @@ Core and extended datasets
 --------------------------
 
 The data dictionary lists the datasets which fields are expected to appear in. The specification has no formal mechanism to  restrict the collection of data. But, in general, there is a 'core' set of data fields that all datasets are encouraged to collect; other datasets may collect extra fields for a specific purpose, either for learning purposes or as a result of a particular data-sharing agreement. The core data fields may expand over time, and become more formalised, as the specification matures. 
+
+Organisation roles and classifications
+--------------------------------------
+
+Datasets collected using the INDIGO specification provide two ways to understand organisations.
+
+The first is by using external identifiers, like company or charity numbers, that can be linked to canonical data sources like a company or charity register. These identifiers will allow analysis by organisational type, jurisdiction, sector and other basic demographics. Data sourced *from* these identifiers should not be replicated in the dataset but may be used in analysis.
+
+The second is by allowing a dynamic picture of organisational activity to emerge from the data itself rather than preassigning classifications. This is done by associating individual components (like an investment) of a project with one or more organisations, as in the diagram below.
+
+.. image:: _assets/organisations.png
+
+An organisation may appear multiple times in a single project, in different roles, and also recur across projects. The organisation can be traced across projects using `INDIGO identifiers`_. Some components also allow an organisation's role to be further broken down via a codelist.
+
+.. admonition:: Example
+
+   A diversified NGO makes an investment of USD250,000 in a project and is also involved in an aspect of service delivery. The same organisation would appear twice in the data that describes the project: first associated with an `Investment` and then associated with a `Service Provision`. Both of these would describe the organisation in the `Organisational Role Category` of "Nonprofit/NGO".
+
+Data collected in this way allows for analysis of the sector as a whole, as well as changes in organisational behaviour over time.
 
 Working with and collecting data
 ================================
@@ -91,6 +95,35 @@ Advanced users may wish to consult the JSON Schema used to transfer data from sp
 .. warning::
    The JSON Schema describes the structure of the data model but not data types.
 
+Data dictionary
+---------------
+
+For each variable, the data dictionary lists:
+
+- a name;
+- a definition;
+- the data type;
+- any technical notes on the data;
+- the datasets in which the variable can appear;
+- the status, source and history of the variable.
+
+The data dictionary is currently available as a **Word file**.
+
+Data collection spreadsheets
+----------------------------
+
++-------------+------------------------------------------------+
+| Cell colour | Rule                                           |
++=============+================================================+
+| Red         | Cell not editable.                             |
++-------------+------------------------------------------------+
+| Orange      | Editable cell; value taken from elsewhere.     |
++-------------+------------------------------------------------+
+| Green       | Id field; must not be changed after creation.  |
++-------------+------------------------------------------------+
+| Grey        | Editable field not used elsewhere.             |
++-------------+------------------------------------------------+
+
 Identifiers
 -----------
 
@@ -99,27 +132,80 @@ The INDIGO specification uses three kinds of identifier to link data internally 
 INDIGO identifiers
 ^^^^^^^^^^^^^^^^^^
 
-INDIGO identifiers are assigned by the INDIGO project to projects, organisations and funds to ensure uniqueness for these important entities across all published datasets.
+INDIGO identifiers are assigned to projects, organisations and funds to ensure uniqueness for these important entities across all published datasets. An INDIGO identifier must not be changed once assigned.
 
-#### Real-world identifiers
+The entity an INDIGO identifier refers to can be inferred from the prefix, as follows.
 
-#### Internal identifiers
++-------------+------------------------------------------+
+| Prefix      | Entity type                              |
++=============+==========================================+
+| INDIGO-POJ  | A project.                               |
++-------------+------------------------------------------+
+| INDIGO-ORG  | An organisation.                         |
++-------------+------------------------------------------+
+| INDIGO-FUND |   An outcome payment or investment fund. |
++-------------+------------------------------------------+
 
-#### Related disclosure identifiers
+Real-world identifiers
+^^^^^^^^^^^^^^^^^^^^^^
 
-## Formatting data
+Most organisations will have an official registration number suitable for use as a unique identifier. The INDIGO specification requires identifiers to use the format and prefixes specified by org-id, an open register of organization lists.
 
-### Dates
+An organisation identifier consists of:
 
-The specification allows for imprecise dates depending on how much information is known (e.g., 2020 or 2020-06). Dates must use the YYYY-MM-DD format.
-
-### Currencies and currency conversion
-
-A field describing a monetary value in the INDIGO specification will always have an accompanying currency field. Monetary values must be described as numbers only with no currency symbols, commas or textual descriptions of large numbers.
+1. A list code: a prefix that describes the list the identifier is taken from.
+2. An identifier taken from that list.
 
 .. admonition:: Example
 
-   A social impact bond 
+   Open Data Services Co-operative Limited is a private company limited by shares, registered in the UK. From the `org-id page <http://org-id.guide/list/GB-COH>`_ the prefix for Companies House is GB-COH. From the `linked register <https://beta.companieshouse.gov.uk/company/09506232>`_ the company number is 09506232. The full identifier in org-id format is then GB-COH-09506232.
+
+Internal identifiers
+^^^^^^^^^^^^^^^^^^^^
+
+Internal identifiers are unique within a project and used to join components of a project together, for example a result can be linked to a specific outcome metric. Once an internal identifier is set it must not be changed.
+
+Related contract identifiers
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To link one or more contracting processes published to the Open Contracting Data Standard (OCDS), use the `ocid`, or contract processing identifier, field. The value in the INDIGO dataset must match that in the relevant published OCDS field. The use of this field is described in the `OCDS documentation <https://standard.open-contracting.org/latest/en/schema/identifiers/#contracting-process-identifier-ocid>`_. The data dictionary describes in what circumstances a contracting process is considered to be linked to a project.  
+
+Related grant identifiers
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+To link one or more grants published to the 360Giving Data Standard, use the `grant_id`, or grant ID, field. The value  of the `grant_id` field in the INDIGO dataset must match that in the relevant 360Giving field. The use of this field in is described in the `360Giving documentation <http://standard.threesixtygiving.org/en/latest/identifiers/#grant-identifier>`_. The data dictionary describes in what circumstances a grant is considered to be linked to a project.
+
+
+Formatting data
+---------------
+
+Dates
+^^^^^
+
+The specification allows for imprecise dates depending on how much information is known (e.g., 2020 or 2020-06). Dates must use the YYYY-MM-DD format.
+
+Currencies and currency conversion
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+A field describing a monetary value in the INDIGO specification should have an accompanying currency field. Monetary values must be described as numbers only with no currency symbols, commas or textual descriptions of large numbers.
+
+Currency codes must come from the `ISO 4217 <https://en.wikipedia.org/wiki/ISO_4217>`_ code list. 
+
+.. admonition:: Example
+
+   A social impact bond makes an investment of USD250000. This data should be input as:
+
+    +------------------------------------------+--------------+
+    | Field                                    | Entity value |
+    +==========================================+==============+
+    | investment_commitment/currency/value     | USD          |
+    +-------------+----------------------------+--------------+
+    | investment_commitment/amount/exact/value | 250000       |
+    +-------------+----------------------------+--------------+
+
+    Inputting the value as "250,000", "$250000" or "250k" would be wrong.
+
+Monetary values should be input in the currency of the original transaction. There may be a converted USD value of any transaction, calculated by the INDIGO project, using the methodology described in the data dictionary. Data providers should not convert transactions to USD when supplying data. 
 
 ### Sources
 
