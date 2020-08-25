@@ -207,10 +207,9 @@ Currency codes must come from the `ISO 4217 <https://en.wikipedia.org/wiki/ISO_4
 
 Monetary values should be input in the currency of the original transaction. There may be a converted USD value of any transaction, calculated by the INDIGO project, using the methodology described in the data dictionary. Data providers should not convert transactions to USD when supplying data. 
 
-### Sources
 
 
-
-## About
+About
+-----
 
 This data model was produced by  `Open Data Services Co-operative <https://opendataservices.coop/>`_. as part of a project with the University of Oxford's `Government Outcomes Lab <https://golab.bsg.ox.ac.uk/>`_.
