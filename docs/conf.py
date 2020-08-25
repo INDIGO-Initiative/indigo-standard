@@ -52,7 +52,7 @@ master_doc = 'index'
 
 # General information about the project.
 project = 'Indigo Data Specification'
-copyright = '2016-2020, Open Data Services Co-operative'
+copyright = '2020, University of Oxford'
 author = 'Open Data Services Co-operative'
 
 # The version info for the project you're documenting, acts as replacement for
