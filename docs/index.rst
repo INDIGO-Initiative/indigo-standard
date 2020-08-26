@@ -85,6 +85,19 @@ An organisation may appear multiple times in a single project, in different role
 
 Data collected in this way allows for analysis of the sector as a whole, as well as changes in organisational behaviour over time.
 
+Relationships between organisations
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+The data model allows for lightweight modelling of control relationships between organisations, of the form "Organisation A is controlled by Organisation B".
+
+This is useful in cases where, for example, investments are held in subsidiary companies and there is a common parent company that can be used for analysis.  
+
+A *controlling* organisation is described like a normal organisation.
+
+A relationship between two organisations is declared by the *controlled* organisation, using the INDIGO ID of the controlling organisation in the `Controlled By` tab.
+
+In general, a relationship between two organisations is assumed to be a relationship between an organisation and its ultimate parent organisation.
+
 Working with and collecting data
 ================================
 
@@ -143,7 +156,7 @@ The entity an INDIGO identifier refers to can be inferred from the prefix, as fo
 +-------------+------------------------------------------+
 | INDIGO-ORG  | An organisation.                         |
 +-------------+------------------------------------------+
-| INDIGO-FUND |   An outcome payment or investment fund. |
+| INDIGO-FUND | An outcome payment or investment fund.   |
 +-------------+------------------------------------------+
 
 Real-world identifiers
@@ -174,6 +187,27 @@ Related grant identifiers
 ^^^^^^^^^^^^^^^^^^^^^^^^^
 
 To link one or more grants published to the 360Giving Data Standard, use the `grant_id`, or grant ID, field. The value  of the `grant_id` field in the INDIGO dataset must match that in the relevant 360Giving field. The use of this field in is described in the `360Giving documentation <http://standard.threesixtygiving.org/en/latest/identifiers/#grant-identifier>`_. The data dictionary describes in what circumstances a grant is considered to be linked to a project.
+
+Transactions
+------------
+
+The transactions tab is designed as a ledger of money in and money out of a project.
+
+A transaction is modelled with a sending organisation and a receiving organisation, a date and an amount. These fields are required.
+
+The value of a transaction (`Amount`) must be positive.
+
+A transaction can be linked to the project as a whole (the default) or to a:
+
+* Outcome payment (using the Outcome Metric ID column to link to the relevant row on the Outcome Metrics tab); 
+* Investment (using the Investment ID column to link to the relevant row on the Investment tab); or,
+* Grant (using the Grant ID column to link to the relevant row on the Grants tab).
+
+Only **one** of these IDs should appear per row, i.e. transactions should be disaggregated where possible. This is particularly important if the data is to be used in further analysis or visualisations.
+
+The transaction type field is used to identify the purpose of the transaction.
+
+The formatting rules on dates and currency values should be followed.
 
 
 Formatting data
