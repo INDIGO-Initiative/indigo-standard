@@ -188,6 +188,28 @@ Related grant identifiers
 
 To link one or more grants published to the 360Giving Data Standard, use the `grant_id`, or grant ID, field. The value  of the `grant_id` field in the INDIGO dataset must match that in the relevant 360Giving field. The use of this field in is described in the `360Giving documentation <http://standard.threesixtygiving.org/en/latest/identifiers/#grant-identifier>`_. The data dictionary describes in what circumstances a grant is considered to be linked to a project.
 
+Social Investment Prototype
+===========================
+
+The Social Investment Prototype offers additional tabs to describe technical assistance, grants and the financial aspects of projects in greater detail, including individual transactions.
+
+Investment Details
+------------------
+
+Expected and latest internal rates of return can be recorded on the investment details tab.
+
+Grants
+------
+
+The grants tab allows for a fuller description of grants awarded as part of a project.
+
+The fields in this tab are reused from 360Giving. It is highly recommended that:
+
+* If a grant is already published to the 360Giving Standard then only the `360 Giving Identifier` field should be filled out. This avoids data entry error elsewhere and allows for the possibility of updates to the source data.
+* Users should refer to the `360Giving documentation <http://standard.threesixtygiving.org/en/latest/>`_. for detailed guidance on field usage.
+
+An additional field `purpose` is used to indicate what the grant is used for. For compatibility, this shares entries with a similar codelist used in the Social Economy Data Lab specification but adds further entries used in the wider sector. 
+
 Transactions
 ------------
 
@@ -208,6 +230,23 @@ Only **one** of these IDs should appear per row, i.e. transactions should be dis
 The transaction type field is used to identify the purpose of the transaction.
 
 The formatting rules on dates and currency values should be followed.
+
+Technical Assistance
+--------------------
+
+Technical Assistance is modelled as a period of engagement between a funding organisation and a recipient organisation with a defined start and end date.
+
+This period of engagement can be broken down on the Technical Assistance Details tab into a series of component activities (as well as high-level information that covers the whole engagement where appropriate).
+
+An activity is linked to an engagement by using the relevant `id` from the `Technical Assistance` tab. Multiple activities can be linked to a single engagement.
+
+Data should not be provided if no technical assistance from a given category has been given, i.e., zero values are not necessary but assumed in the absence of data.
+
+Each activity can be assigned a cost and a cost type and a time cost in days.
+
+Where no cost is available, or where a cost is inappropriate, a row can be added with the relevant category selected and the value and cost type fields left blank. This will allow activities to be analysed as simple counts. 
+
+Activities can be further classified by the delivery approach.
 
 
 Formatting data
