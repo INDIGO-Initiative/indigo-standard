@@ -7,7 +7,7 @@ INDIGO Data Specification | The International Network for Data on Impact and Gov
 Background
 ==========
 
-This work is part of a new International Network for Data on Impact and Government Outcomes (INDIGO), supported by the University of Oxford's `Government Outcomes Lab (GO Lab) <https://golab.bsg.ox.ac.uk/>`_ See `here for a general introduction to INDIGO <https://golab.bsg.ox.ac.uk/toolkit/INDIGO-Intro2020/>`
+This work is part of a new International Network for Data on Impact and Government Outcomes (INDIGO), supported by the University of Oxford's `Government Outcomes Lab (GO Lab) <https://golab.bsg.ox.ac.uk/>`_ See here for a general introduction to INDIGO: <https://golab.bsg.ox.ac.uk/toolkit/INDIGO-Intro2020/>
 
 In early 2020, `Open Data Services Co-operative <https://opendataservices.coop/>`_. and the GO Lab collaborated on two initiatives: updating an Impact Bond Database and prototyping the collection of data on returns and non-financial technical assistance in the social investment sector.
 
@@ -113,10 +113,10 @@ Advanced users may wish to consult the JSON Schema used to transfer data from sp
 Data dictionary
 ---------------
 
-On August 27, 2020 we released a`draft data dictionary <https://s3.eu-west-2.amazonaws.com/golab.prod/documents/DataDictionary2020_v2-00_Draft_27-AUG-20.pdf>`for participants of our INDIGO Hack-and-Learn event.
+On August 27, 2020 GO Lab released a draft data dictionary for participants of our INDIGO Hack-and-Learn event: 
+<https://s3.eu-west-2.amazonaws.com/golab.prod/documents/DataDictionary2020_v2-00_Draft_27-AUG-20.pdf>
 
 For each variable, the data dictionary lists:
-
 - a name;
 - a definition;
 - the data type;
