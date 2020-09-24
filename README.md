@@ -1,3 +1,7 @@
+# Documentation for the INDIGO Specification
+
+Hosted at https://indigo-standard.readthedocs.io/en/latest/
+
 # Open Data Services Sphinx Base
 
 The base Sphinx setup (recommonmark + internationalisation) for Open Data
